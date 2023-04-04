@@ -1,5 +1,5 @@
- import { Schema } from 'mongoose';
-
+ import { Schema,Document } from 'mongoose';
+import {Prop, SchemaFactory} from '@nestjs/mongoose';
 
 
 export const UserSchema = new Schema({
@@ -12,17 +12,24 @@ export const UserSchema = new Schema({
   emailId: {
     type: String,
     required: true,
+  },
+  mobileNumber: {
+    type: String,
+    required: true,
     unique: true
-  }
+  },
+  userName: {
+    type: String,
+    required:true
+  },
+  password: {
+    type: String,
+    required : true
+  },
+  
+
 });
 
-export const ProductSchema = new Schema({
-  name: {type: String, required: true},
-  description: String,
-  imageUrl: String,
-  price: Number,
-  createdAt: {
-      type: Date,
-      default: Date.now,
-  },
-});
+
+
+
