@@ -23,10 +23,10 @@ import { LoggerMiddleware } from './middleware/LoggerMiddleware';
   ],
   providers: [
     AuthService,
-    {
-      provide: APP_GUARD,
-      useClass: AuthGuard,
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: AuthGuard,
+    // },
   ],
   controllers: [AuthController],
   exports: [AuthService],
@@ -36,14 +36,14 @@ export class AuthModule implements NestModule {
     consumer
       .apply(
         LoggerMiddleware,
-        cookieSession({
-          name: 'session',
-          secret: 'my_secret',
-          maxAge: 24 * 60 * 60 * 1000, // 24 hours
-          secure: true,
-          httpOnly: true,
-          signed: true,
-        }),
+        // cookieSession({
+        //   name: 'session',
+        //   secret: 'my_secret',
+        //   maxAge: 24 * 60 * 60 * 1000, // 24 hours
+        //   secure: true,
+        //   httpOnly: true,
+        //   signed: true,
+        // }),
       )
       .forRoutes(AuthController);
   }

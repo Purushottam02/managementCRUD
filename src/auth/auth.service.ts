@@ -71,4 +71,42 @@ export class AuthService {
       return '';
     }
   }
+
+  async result(username: string, password: string) {
+    // try {
+    //   const user = await this.usersService.login(username);
+    //   if (!user || user.password !== password) {
+    //     throw new UnauthorizedException();
+    //   }
+    //   const { password: _, ...result } = user.toObject();
+    //   const payload = { username: user.username, sub: user.userId };
+    //   const token = await this.jwtService.signAsync(payload);
+    //   return token;
+    // } catch (err) {
+    //   console.error(err);
+    //   return '';
+    // }
+    return 'result';
+
+  }
+
+
+  async about(username: string, password: string) {
+    // try {
+    //   const user = await this.usersService.login(username);
+    //   if (!user || user.password !== password) {
+    //     throw new UnauthorizedException();
+    //   }
+    //   const { password: _, ...result } = user.toObject();
+    //   const payload = { username: user.username, sub: user.userId };
+    //   const token = await this.jwtService.signAsync(payload);
+    //   return token;
+    // } catch (err) {
+    //   console.error(err);
+    //   return '';
+    // }
+    return  'about';
+
+  }
+
 }

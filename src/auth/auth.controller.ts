@@ -38,15 +38,35 @@ export class AuthController {
     }
   }
   @Get('/profile')
-  profile(
+  async profile(
     @Req() req: Request & { session: SessionData },
-    @Res() res: Response,
+    @Res() res: Response,@Body() signInDto: SignINDto
   ) {
+    const profile = await this.authService.result(
+      signInDto.userName,
+      signInDto.password,
+    );
     const accessToken = req.session.accessToken;
     if (!accessToken) {
       res.status(401).send('Unauthorized');
       return;
     }
-    res.send(`Access token: ${accessToken}`);
+    res.send(`Access token: ${profile}`);
+  }
+  @Get('/about')
+  async about(
+    @Req() req: Request & { session: SessionData },
+    @Res() res: Response,@Body() signInDto: SignINDto
+  ) {
+    const profile = await this.authService.about(
+      signInDto.userName,
+      signInDto.password,
+    );
+    const accessToken = req.session.accessToken;
+    if (!accessToken) {
+      res.status(401).send('Unauthorized');
+      return;
+    }
+    res.send(`Access token: ${profile}`);
   }
 }

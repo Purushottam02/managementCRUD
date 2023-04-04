@@ -16,18 +16,20 @@ import { LoggerMiddleware } from './auth/middleware/LoggerMiddleware';
   controllers: [AppController],
   providers: [AppService,JwtModule],
 })
-export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-        consumer
-          .apply(LoggerMiddleware)
-          .exclude(
-            { path: '/profile', method: RequestMethod.GET },
-            // { path: '/profile', method: RequestMethod.POST },
-            'auth/(.*)',
-  )
-          .forRoutes(AuthController);
-  }
-}
+
+export class AppModule{}
+// export class AppModule implements NestModule {
+//   configure(consumer: MiddlewareConsumer) {
+//         consumer
+//           .apply(LoggerMiddleware)
+//           .exclude(
+//             { path: '/profile', method: RequestMethod.GET },
+//             // { path: '/profile', method: RequestMethod.POST },
+//             'auth/(.*)',
+//   )
+//           .forRoutes(AuthController);
+//   }
+// }
 
 
 

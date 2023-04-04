@@ -12,12 +12,12 @@ import {
 import { ApiResponse, ApiQuery } from '@nestjs/swagger';
 import { CreateUserDTO } from './user.dto';
 import { UserService } from './user.service';
-
-
+import { Public } from '../auth/decorators/public.decorator';
 @Controller()
 export class UserController {
   constructor(private readonly UserService: UserService) {}
-  
+
+  // @Public()
   @Post('/create')
   @ApiResponse({ status: 201, description: 'Successful Login' })
   @ApiResponse({ status: 400, description: 'Bad Request' })
@@ -60,10 +60,5 @@ export class UserController {
       deletedUser,
     });
   }
-  // @Post('/login')
-  // @ApiResponse({ status: 201, description: 'Successful Login' })
-  // @ApiResponse({ status: 400, description: 'Bad Request' })
-  // async signIn(@Body() signInDto: Record<string, any>) {
-  //   return this.authService.signIn(signInDto.username, signInDto.password);
-  // }
+
 }
